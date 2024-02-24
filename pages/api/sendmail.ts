@@ -11,10 +11,9 @@ export default async function handler(
     await sendEmail({
       to: req.body.to,
       subject: req.body.subject,
-      html: render(WelcomeTemplate({ email: req.body.to, password: 'abc123'})),
+      html: render(WelcomeTemplate({ email: req.body.to, password: 'abc123' })),
     });
 
     return res.status(200).json({ message: 'Email sent successfully' });
   }
-  
 }
