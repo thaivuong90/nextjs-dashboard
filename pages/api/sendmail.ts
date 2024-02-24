@@ -9,29 +9,17 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     await sendEmail({
-      to: 'thaivuong1503@gmail.com',
-      subject: 'test send POST',
+      to: req.body.to,
+      subject: req.body.subject,
       html: render(
         WelcomeTemplate({
-          email: 'thaivuong1503@gmail.com',
-          password: 'abc123',
+          email: req.body.to,
+          password: req.body.password,
         }),
       ),
     });
 
     return res.status(200).json({ message: 'Email sent successfully' });
   } else {
-    await sendEmail({
-      to: 'thaivuong1503@gmail.com',
-      subject: 'test send GET',
-      html: render(
-        WelcomeTemplate({
-          email: 'thaivuong1503@gmail.com',
-          password: 'abc123',
-        }),
-      ),
-    });
-
-    return res.status(200).json({ message: 'Email sent successfully' });
   }
 }
