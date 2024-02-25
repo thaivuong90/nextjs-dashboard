@@ -9,16 +9,24 @@ if (!admin.apps.length) {
   });
 }
 
-const getUserInfo = async (uid: string) => {
+type UserInfo = {
+  email?: string;
+  password?: string;
+  phoneNumber?: string;
+  displayName?: string;
+  disabled?: boolean;
+};
+
+const getUser = async (uid: string) => {
   const userRecord = await getAuth().getUser(uid);
   return userRecord ? userRecord : null;
 };
 
-const updatePassword = async (uid: string, password: string) => {
-  return null;
-}
-
-export {
-  getUserInfo,
-  updatePassword
+const updateUser = async (uid: string, user: UserInfo) => {
+  return await getAuth().updateUser(uid, user);
 };
+
+const createUser = async (user: UserInfo) => {
+  return await getAuth().createUser(user);
+};
+export { getUser, updateUser, createUser };
