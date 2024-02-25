@@ -8,18 +8,19 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   if (req.method === 'POST') {
-    await sendEmail({
-      to: req.body.to,
-      subject: req.body.subject,
-      html: render(
-        WelcomeTemplate({
-          email: req.body.to,
-          password: req.body.password,
-        }),
-      ),
-    });
+    // await sendEmail({
+    //   to: req.body.to,
+    //   subject: req.body.subject,
+    //   html: render(
+    //     WelcomeTemplate({
+    //       email: req.body.to,
+    //       password: req.body.password,
+    //     }),
+    //   ),
+    // });
 
     return res.status(200).json({ message: 'Email sent successfully' });
   } else {
+    return res.status(200).json({ message: '' });
   }
 }
