@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { render } from '@react-email/render';
-import WelcomeTemplate from '../../app/ui/emails/WelcomeTemplate';
+import MailTemplate from '../../app/ui/emails/template';
 import { sendEmail } from '../../app/lib/email';
 
 export default async function handler(
@@ -12,7 +12,7 @@ export default async function handler(
       to: req.body.to,
       subject: req.body.subject,
       html: render(
-        WelcomeTemplate({
+        MailTemplate({
           email: req.body.to,
           password: req.body.password,
         }),
