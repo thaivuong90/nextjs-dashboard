@@ -14,6 +14,7 @@ export default async function handler(
       return res.status(200).json({ message: rsCreate });
     case 'PUT':
       const rsUpdate = await updateUser(req.body.uid, req.body.user);
+      const { password } = req.body.user;
       if (rsUpdate.email) {
         await sendEmail({
           to: rsUpdate.email,
@@ -21,7 +22,7 @@ export default async function handler(
           html: render(
             MailTemplate({
               email: rsUpdate.email,
-              password: req.body.user.password,
+              password: password,
             }),
           ),
         });
