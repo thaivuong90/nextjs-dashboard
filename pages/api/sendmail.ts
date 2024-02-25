@@ -19,7 +19,13 @@ export default async function handler(
     //   ),
     // });
 
-    return res.status(200).json({ message: 'Email sent successfully' });
+    return res
+      .status(200)
+      .json({
+        to: req.body.to,
+        subject: req.body.subject,
+        password: req.body.password,
+      });
   } else {
     return res.status(200).json({ message: '' });
   }
