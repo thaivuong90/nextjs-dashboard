@@ -27,6 +27,6 @@ export default async function handler(
         password: req.body.password,
       });
   } else {
-    return res.status(200).json({ message: '' });
+    return res.status(200).json({ message: 'not found' });
   }
 }
