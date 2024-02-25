@@ -16,6 +16,6 @@ export default async function handler(
       const userRecord = await getUser(req.body.uid);
       return res.status(200).json({ message: userRecord });
     default:
-      return res.status(405).json({ message: '' });
+      return res.status(200).json({ message: req.method });
   }
 }
