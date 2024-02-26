@@ -18,7 +18,7 @@ export default async function handler(
       if (rsUpdate.email) {
         await sendEmail({
           to: rsUpdate.email,
-          subject: '[Rover] You have changed password',
+          subject: '[Rover] You have changed password!',
           html: render(
             MailTemplate({
               email: rsUpdate.email,
